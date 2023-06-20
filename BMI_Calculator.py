@@ -1,6 +1,13 @@
 def cal(uw,a,ow):
-    bmi=(float(input("What is your weight in KG: ")))/(((int(input("What is your height in CM:  ")))/100)**2)
-    print("Your BMI is",bmi)
+    weight=input("Enter you weight in KG: ")
+    while not (weight.isdigit() or ("." in weight and weight[:weight.index(".")].isdigit() and weight[weight.index(".")+1:].isdigit())):
+        weight=input("Re-enter you weight in KG: ")
+
+    height=input("Enter your height in CM: ")
+    while not height.isdigit():
+        height=input("Re-enter your height in CM: ")
+    bmi=(float(weight))/(((int(height)))/100)**2
+    print("Your BMI is",round(bmi,3))
     if bmi<uw:
         print("You are underweight")
     elif bmi<a:
@@ -10,18 +17,18 @@ def cal(uw,a,ow):
     else:
         print("you are obese")
 
-age=input("Enter your age:")
+age=input("Enter your age: ")
 while not age.isdigit():
-    age=input("Re-enter your age:")
+    age=input("Re-enter your age: ")
 age=int(age)
 if age>19:
     cal(19,25,30)
 elif age<2:
     print("You are too young to measure your BMI")
 else:
-    gender=input("Enter whether you are a boy or a girl:")
+    gender=input("Enter whether you are a boy or a girl: ")
     while not gender in ["boy","girl"]:
-        gender=input("Invalid. Enter eighter 'boy' or 'girl'\nRe-enter whether you are a boy or a girl:")
+        gender=input("Invalid. Enter eighter 'boy' or 'girl'\nRe-enter whether you are a boy or a girl: ")
 
     if gender=="boy":
         data=((14.7,18.1,19.3),(14.4,17.4,18.3),(14,17,17.8),(13.8,17.8,18.1),(14.3,17,18.4),(14.2,17.4,19.2),(13.7,18,20),(14,18.6,21),(14.3,19.4,22),(14.5,20.1,23.2),(15,21,24.2),(15.4,21.7,25.1),(16,22.6,26),(16.5,23.4,26.8),(17.1,24.2,27.5),(17.6,24.9,28.4),(18.3,25.6,29),(18.5,25,30))
